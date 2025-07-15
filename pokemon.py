@@ -9,6 +9,7 @@ import selenium.webdriver as wb
 from selenium.webdriver.common.by import By 
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 import time
 
 options = Options()
@@ -16,9 +17,10 @@ options.add_argument("--headless") # 창 없음
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
+service = Service(executable_path="/usr/bin/chromedriver")
 
 url = "https://pokemonkorea.co.kr/pokedex"
-driver = wb.Chrome(options=options)
+driver = wb.Chrome(service=service, options=options)
 driver.maximize_window()
 driver.get(url)
 
